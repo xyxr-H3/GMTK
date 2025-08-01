@@ -1,0 +1,20 @@
+SoundManager简介
+SoundManager是一个用于管理游戏音效的Unity脚本。它提供了一组方便的方法，用于播放、暂停、停止和调整音量等操作
+
+##################一、使用方法##################
+
+1、在SoundManager下创建包含AudioSource类型的子物体
+2、将该子物体拖拽到SoundManager脚本中Music或SoundEffect中，更改Name属性
+3、在任意脚本中通过SoundManager.instance.Play("Name");来播放
+4、SoundManager.insance.Pause("Name");来暂停
+5、SoundManager.insance.Stop("Name");来停止
+6、SoundManager.insance.SetVolume("Name",0.5f);来设置音量
+7、SoundManager.insance.GetVolume(true/false , 0.5f)来设置所有音乐/音效的音量
+8、SoundManager.instance.FadeVolumn("Name",0.5f,1f) 表示Name音乐 用1s时间渐变到0.5大小的音量
+9、SoundManager.instance.FadeVolumn(true/false,0.5f,1f) 表示所有音乐/音效 用1s时间渐变到0.5大小的音量
+
+#################二、常见报错####################
+
+*报错 1：NullReference
+*原因：SoundManager未加载到场景中，或者是否在第一个场景的脚本中的Awake方法中调用
+*解决：检查是否将SoundManager挂载到场景中的一个物体中，将调用SoundManager的位置从Awake挪到Start方法中

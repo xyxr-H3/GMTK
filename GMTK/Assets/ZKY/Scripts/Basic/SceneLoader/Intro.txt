@@ -1,0 +1,21 @@
+SceneLoader 简介：
+一个简单的场景加载器
+
+##############一、使用方法#############
+#初始化#
+1、在项目中需要存在SinglatonForMono.cs和SceneLoader.cs两个脚本
+2、把SceneLoader的预制体添加到第一个场景中
+
+#使用#
+1、在需要加载场景的地方调用SceneLoader.Instance.LoadScene("场景名")
+
+
+#############二、常见报错###############
+
+*报错 1：NullReference
+*原因：SceneLoader未加载到场景中，或者是否在第一个场景的脚本中的Awake方法中调用
+*解决：检查是否将SceneLoader挂载到场景中的一个物体中，将调用SceneLoader的位置从Awake挪到Start方法中
+
+*报错 2：Scene '**' couldn't be loaded because it has not been added to the build settings or the AssetBundle has not been loaded.
+*原因：目标场景无法被加载
+*解决：检查是否名称填写正确，是否将目标场景添加到Build Settings中
