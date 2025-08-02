@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 4c88076217fb81c4cb9df73ef1630746
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _EF_T_Compass_Outer: {fileID: 2800000, guid: 61dc5987f44ecc54696a34c05759b6fd, type: 3}
+  - _EF_T_Noise_001: {fileID: 2800000, guid: 315f9cb4b8147ea4bae8c0c63f457177, type: 3}
+  - _EF_T_Gradient_001: {fileID: 2800000, guid: 49780af9f61abd54a873c6ff3de84784, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
