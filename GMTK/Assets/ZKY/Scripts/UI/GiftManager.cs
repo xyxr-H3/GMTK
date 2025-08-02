@@ -46,9 +46,9 @@ namespace ZKY
                 _giftItm.transform.DOScale(Vector3.zero, _giftItemMoveDuration2).SetEase(Ease.InBack);
                 _giftOnScreen.SetActive(true);
                 _giftOnScreen.transform.localScale = Vector3.zero;
-                _giftOnScreen.transform.DOScale(Vector3.one, _giftItemMoveDuration2).SetEase(Ease.OutBack);
+                _giftOnScreen.transform.DOScale(Vector3.one, _giftItemMoveDuration2).SetEase(Ease.InBack);
             };
-            yield return new WaitForSeconds(_giftItemMoveDuration + _giftItemMoveDuration2);
+            yield return new WaitForSeconds(_giftItemMoveDuration + _giftItemMoveDuration2 * 2);
             _opened.SetActive(false);
         }
         // private void Update()
