@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EF_MI_Compass_002
+  m_Shader: {fileID: 4800000, guid: 4c88076217fb81c4cb9df73ef1630746, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Base:
+        m_Texture: {fileID: 2800000, guid: 675e9f0fb0d5fa14f998ac223784d6d5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EF_T_Compass_Inner:
+        m_Texture: {fileID: 2800000, guid: 0d505fb6b6d19f747a23749c74c54896, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EF_T_Compass_Outer:
+        m_Texture: {fileID: 2800000, guid: 0d505fb6b6d19f747a23749c74c54896, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EF_T_Compass_Outer_M:
+        m_Texture: {fileID: 2800000, guid: 6564e8d60c10b3c44b7f3e29c526150a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EF_T_Gradient_001:
+        m_Texture: {fileID: 2800000, guid: 49780af9f61abd54a873c6ff3de84784, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EF_T_Noise_001:
+        m_Texture: {fileID: 2800000, guid: a25d4884c9bd70c4f91774968f2e9e41, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Range: 3
+    - __dirty: 0
+    m_Colors:
+    - _NoiseControl: {r: 1, g: 3, b: -0.1, a: -0.05}
+    - _OutColor: {r: 13.970078, g: 8.898573, b: 44.727043, a: 1}
+    - _UVControl: {r: 0.81, g: 1.1, b: 0.1, a: -0.06}
+    - _UVControl1: {r: 0.9, g: 1.18, b: 0.05, a: -0.08}
+    - _UVControl2: {r: 0.88, g: 1.2, b: 0.055, a: -0.09}
+    - _Vector0: {r: 1, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []

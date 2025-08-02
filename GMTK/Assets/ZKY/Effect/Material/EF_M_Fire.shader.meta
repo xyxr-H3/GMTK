@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6a75423773469f349944b78cf06c5789
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _Noise: {fileID: 2800000, guid: 315f9cb4b8147ea4bae8c0c63f457177, type: 3}
+  - _Gradient: {fileID: 2800000, guid: b34c9c14e62f2594990bb29a75d09651, type: 3}
+  - _FireShape: {fileID: 2800000, guid: 469c39ec74d67d6479e142281e00ed34, type: 3}
+  - _WrapTex: {fileID: 2800000, guid: a25d4884c9bd70c4f91774968f2e9e41, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

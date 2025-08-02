@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// 场景加载器类，继承自SinglatonForMono<SceneLoader>
@@ -12,8 +14,16 @@ public class SceneLoader : SinglatonForMono<SceneLoader>
     /// 当前场景的名称
     /// </summary>
     [SerializeField] private string currentScene;
-    [SerializeField] private Material _transMat;
+    [SerializeField] private RawImage _transImage;
     [SerializeField] private float _tranTime;
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 
     /// <summary>
     /// 加载场景的方法
@@ -36,15 +46,11 @@ public class SceneLoader : SinglatonForMono<SceneLoader>
     {
         if (useTransition)
         {
-            var timer = 0.0f;
-            while (timer < _tranTime)
-            {
-                Debug.Log(_transMat.GetFloat("_Intensity"));
-                timer += Time.deltaTime;
-                _transMat.SetFloat("_Intensity", Mathf.Lerp(1.2f, -1, timer / _tranTime));
-                yield return null;
-            }
+            _transImage.DOColor(Color.black, _tranTime).SetEase(Ease.InOutQuad);
         }
+
+        yield return new WaitForSeconds(_tranTime);
+
         yield return SceneManager.LoadSceneAsync(sceneToGo, LoadSceneMode.Additive);
 
         yield return SceneManager.UnloadSceneAsync(currentScene);
@@ -53,14 +59,7 @@ public class SceneLoader : SinglatonForMono<SceneLoader>
 
         if (useTransition)
         {
-            var timer = 0.0f;
-            while (timer < _tranTime)
-            {
-                timer += Time.deltaTime;
-                _transMat.SetFloat("_Intensity", Mathf.Lerp(-1, 1.2f, timer / _tranTime));
-                yield return null;
-            }
+            _transImage.DOColor(Color.clear, _tranTime).SetEase(Ease.InOutQuad);
         }
-
     }
 }
