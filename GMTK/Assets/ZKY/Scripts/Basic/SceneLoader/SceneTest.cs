@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SceneTest : MonoBehaviour
 {
-    void Start()
-    {
-        SceneLoader.instance.LoadScene("New Scene");
-    }
+    // void Start()
+    // {
+    //     SceneLoader.instance.LoadScene("New Scene");
+    // }
 }

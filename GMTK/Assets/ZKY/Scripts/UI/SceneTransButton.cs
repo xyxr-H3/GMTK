@@ -9,12 +9,13 @@ namespace ZKY
     {
         private Button _button;
         [SerializeField] private string _sceneName;
+        [SerializeField] private bool _useTransition;
         private void Start()
         {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(() =>
             {
-                SceneLoader.instance.LoadScene(_sceneName);
+                SceneLoader.instance.LoadScene(_sceneName, _useTransition);
             });
         }
     }
