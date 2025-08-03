@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b17bdeabbbc943a782037b7627b5111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneToGo: Level4
+  _sceneToGo: WinScene
   _useTransition: 1
   _playAudio: 0
   _musicName: Home
