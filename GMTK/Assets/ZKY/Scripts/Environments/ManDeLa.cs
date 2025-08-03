@@ -65,7 +65,10 @@ namespace ZKY
             SoundManager.instance.FadeVolumn(_previewsSceneName, 0, _fadeTime);
             yield return new WaitForSeconds(_fadeTime);
             SoundManager.instance.Stop(_previewsSceneName);
-            yield return new WaitForSeconds(_waitReadTime);
+        }
+
+        public void StartFinalLight()
+        {
             _chaseLight.SetActive(true);
             var fadelights = FindObjectsByType<FadeLight>(sortMode: FindObjectsSortMode.None);
             var spinlights = FindObjectsByType<SpineLight>(sortMode: FindObjectsSortMode.None);

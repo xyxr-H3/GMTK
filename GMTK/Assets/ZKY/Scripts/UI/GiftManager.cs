@@ -16,7 +16,6 @@ namespace ZKY
         [SerializeField] private float _giftItemMoveDuration;
         [SerializeField] private float _giftItemMoveDuration2;
         [SerializeField] private GameObject _background;
-        [SerializeField] private float _showDuration;
 
         private void Awake()
         {
@@ -41,6 +40,14 @@ namespace ZKY
             StartCoroutine(GetGiftCoroutine());
         }
 
+        public void Close()
+        {
+            _background.transform.DOScale(Vector3.zero, _giftItemMoveDuration2).SetEase(Ease.InBack).onComplete += () =>
+            {
+                _background.SetActive(false);
+            };
+        }
+
         IEnumerator GetGiftCoroutine()
         {
             _closed.SetActive(true);
@@ -58,7 +65,7 @@ namespace ZKY
             _closed.SetActive(false);
             _opened.SetActive(true);
             _giftItm.SetActive(true);
-            _giftItm.transform.DOMoveY(_giftItemMoveY, _giftItemMoveDuration).onComplete += () =>
+            _giftItm.transform.DOMoveY(_giftItemMoveY + transform.position.y, _giftItemMoveDuration).onComplete += () =>
             {
                 _giftItm.transform.DOScale(Vector3.zero, _giftItemMoveDuration2).SetEase(Ease.InBack);
                 _background.transform.localScale = Vector3.zero;
@@ -67,11 +74,6 @@ namespace ZKY
             };
             yield return new WaitForSeconds(_giftItemMoveDuration + _giftItemMoveDuration2 * 2);
             _opened.SetActive(false);
-            yield return new WaitForSeconds(_showDuration);
-            _background.transform.DOScale(Vector3.zero, _giftItemMoveDuration2).SetEase(Ease.InBack).onComplete += () =>
-            {
-                _background.SetActive(false);
-            };
         }
         // private void Update()
         // {
