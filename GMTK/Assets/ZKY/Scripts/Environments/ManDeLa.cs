@@ -19,6 +19,7 @@ namespace ZKY
         [SerializeField] private GameObject _chaseLight;
         [SerializeField] private MyEvents _getMandera;
         [SerializeField] private GameObject _giftItem;
+        [SerializeField] private GetItemData _getItemData;
 
         private void Awake()
         {
@@ -48,6 +49,7 @@ namespace ZKY
         {
             if (_isPlayerIn && Input.GetKeyDown(_interactKeyCode))
             {
+                _getItemData.isGet = true;
                 Debug.Log("Interact with ManDeLa");
                 _isInteract = true;
                 _UI.SetActive(false);
