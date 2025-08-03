@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class Motion : MonoBehaviour
     Animator animator;
     float x;
     float y;
+    float z;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class Motion : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
         rb.velocity = new Vector3(x, y, 0) * speed;
-
+        transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Clamp(transform.position.y - 3, -6, -0.1f));
     }
     void AnimatorManager()
     {
