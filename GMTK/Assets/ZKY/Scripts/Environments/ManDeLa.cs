@@ -14,6 +14,17 @@ namespace ZKY
         [SerializeField] private string _previewsSceneName;
         [SerializeField] private string _musicName;
         [SerializeField] private float _fadeTime;
+        [SerializeField] private float _waitReadTime;
+        [SerializeField] private Animator _animator;
+        [SerializeField] private GameObject _chaseLight;
+        [SerializeField] private MyEvents _getMandera;
+        [SerializeField] private GameObject _giftItem;
+
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>();
+
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -40,14 +51,31 @@ namespace ZKY
                 Debug.Log("Interact with ManDeLa");
                 _isInteract = true;
                 _UI.SetActive(false);
-                SoundManager.instance.FadeVolumn(_previewsSceneName, 0, _fadeTime);
-                Invoke(nameof(LoadNextMusic), _fadeTime);
-                // TODO: Interact with ManDeLa`
+                _giftItem.SetActive(true);
+                _getMandera.Invoke();
+                StartCoroutine(changeMusic());
+                _animator.SetTrigger("Pull");
             }
         }
-        private void LoadNextMusic()
+
+        private IEnumerator changeMusic()
         {
+            SoundManager.instance.FadeVolumn(_previewsSceneName, 0, _fadeTime);
+            yield return new WaitForSeconds(_fadeTime);
             SoundManager.instance.Stop(_previewsSceneName);
+            yield return new WaitForSeconds(_waitReadTime);
+            _chaseLight.SetActive(true);
+            var fadelights = FindObjectsByType<FadeLight>(sortMode: FindObjectsSortMode.None);
+            var spinlights = FindObjectsByType<SpineLight>(sortMode: FindObjectsSortMode.None);
+
+            foreach (var light in fadelights)
+            {
+                light.gameObject.SetActive(false);
+            }
+            foreach (var light in spinlights)
+            {
+                light.gameObject.SetActive(false);
+            }
             SoundManager.instance.ChangeVolumn(_musicName, 0);
             SoundManager.instance.Play(_musicName);
             SoundManager.instance.FadeVolumn(_musicName, 1, _fadeTime);
