@@ -2,14 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZKY;
 
 public class BlindBox : MonoBehaviour
 {
     [SerializeField]
     GameObject Player;
+    [SerializeField]
+    Animator animator;
+    [SerializeField]
+    GameObject spider;
+    [SerializeField]
+    MyEvents encourage;
     float distance = 2;
     int count = 0;
     int randomMax;
+    bool isEnter = false;
+    float winningRate = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +32,7 @@ public class BlindBox : MonoBehaviour
     }
     void Raffle()
     {
-        if (Vector3.Distance(Player.transform.position, this.transform.position) < distance)
+        if (isEnter)
         {
             if (Input.GetKeyDown(KeyCode.Space) && count < 4)
             {
@@ -40,28 +49,45 @@ public class BlindBox : MonoBehaviour
         }
         else
         {
-            bool isNull = UnityEngine.Random.Range(0, randomMax) < 0.5f;
+            bool isNull = UnityEngine.Random.Range(0, randomMax) < winningRate;
             if (isNull && count < 3)
             {
                 Debug.Log("你没中奖");
             }
-            else if (!isNull || count == 3)
+            else if (isNull && count == 2)
+            {
+                winningRate = 0;
+            }
+            else if (!isNull)
             {
                 randomMax = 1;
+                winningRate = 1;
+                encourage.Invoke();
                 Debug.Log("你中奖了");
             }
         }
         count++;
+        animator.SetInteger("count", count);
     }
 
     void CreateSpider()
     {
+        spider.SetActive(true);
         Debug.Log("蜘蛛跑出来了");
     }
 
-    private void OnDrawGizmos()
+    private void OnTriggerEnter(Collider other)
     {
-        Gizmos.color = new Color(1, 0, 0, 0.3f);
-        Gizmos.DrawSphere(transform.position, distance);
+        if (other.CompareTag("Player") && !isEnter)
+        {
+            isEnter = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player") && isEnter)
+        {
+            isEnter = false;
+        }
     }
 }

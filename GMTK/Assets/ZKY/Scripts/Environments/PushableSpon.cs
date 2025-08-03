@@ -55,7 +55,7 @@ namespace ZKY
 
         private void Update()
         {
-            if (Input.GetKeyDown(_pushKey))
+            if (Input.GetKeyDown(_pushKey) && _canPush)
             {
                 _isPushing = !_isPushing;
                 if (_isPushing)

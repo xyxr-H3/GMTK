@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using ZKY;
 
 public class Candle : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class Candle : MonoBehaviour
     GameObject player;
     [SerializeField]
     Animator animator;
+    [SerializeField]
+    GameObject l;
+    [SerializeField]
+    MyEvents events;
     Vector3 ctoPPosition;
     float distance = 2f;
     bool isMove;
@@ -27,8 +32,10 @@ public class Candle : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && isMove)
         {
             candlelight.SetActive(false);
+            l.SetActive(false);
             this.enabled = false;
-            animator.SetBool("IsFall",true);
+            animator.SetBool("IsFall", true);
+            events.Invoke();
         }
     }
     void RecordPosition()

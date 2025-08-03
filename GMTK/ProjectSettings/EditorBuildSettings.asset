@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ZKY/Scenes/MainMenu.unity
+    guid: 7f28a50f9023b4e019d67b4c44e47f0c
+  - enabled: 1
+    path: Assets/ZKY/Scenes/StoryScene.unity
+    guid: 5dd8c14330f4b4afcb8d0855c3237f2f
+  - enabled: 1
+    path: Assets/ZKY/Scenes/Level3.unity
+    guid: b9df3aebc571f485eb7531ab75c5d75b
+  - enabled: 1
+    path: Assets/ZKY/Scenes/Level4.unity
+    guid: 14971d349a3064d2f8287f77947136f2
+  - enabled: 1
+    path: Assets/ZKY/Scenes/WinScene.unity
+    guid: 8ffbaf0995e66427dbb1a492f76bf1f1
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 93a1ec92ee7bf8447a889b3f10e1724f
   m_configObjects: {}
