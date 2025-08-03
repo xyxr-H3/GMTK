@@ -2989,6 +2989,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f1eebe1e27f5947299c4e36fdeadb935, type: 2}
   - {fileID: 2100000, guid: 08a1a7ff4b0b04196906cdd1686123a1, type: 2}
   - {fileID: 2100000, guid: 5d036afde015140ab9472dd567c74b5e, type: 2}
+  _spiderLiegs:
+  - {fileID: 1037758404}
+  - {fileID: 1724330639}
+  - {fileID: 1416408136}
+  - {fileID: 966236087}
   _spiderDisappearTime: 1
   _waitTime: 2
 --- !u!1 &1684584724

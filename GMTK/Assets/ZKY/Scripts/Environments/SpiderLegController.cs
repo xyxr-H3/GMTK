@@ -9,6 +9,7 @@ namespace ZKY
         [SerializeField] private List<Collider> _spiderLegRegions;
         [SerializeField] private MyEvents _spiderHurtEvent;
         [SerializeField] private List<Material> _spiderLegMaterials;
+        [SerializeField] private List<GameObject> _spiderLiegs;
         [SerializeField] private float _spiderDisappearTime = 1f;
         [SerializeField] private float _waitTime = 2f;
 
@@ -50,6 +51,10 @@ namespace ZKY
                     mat.SetFloat("_Intensity", Mathf.Lerp(0f, 1f, _timer / _spiderDisappearTime));
                 }
                 yield return null;
+            }
+            foreach (var leg in _spiderLiegs)
+            {
+                leg.SetActive(false);
             }
         }
     }
