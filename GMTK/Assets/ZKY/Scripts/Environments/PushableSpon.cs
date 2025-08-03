@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace ZKY
@@ -13,6 +14,21 @@ namespace ZKY
         [SerializeField] private KeyCode _pushKey = KeyCode.Space;
         [SerializeField] private Vector3 _releventPos;
         [SerializeField] private GameObject _player;
+        [SerializeField] private MyEvents _trapped;
+
+        private void OnEnable() {
+            _trapped._event += OnTrapped;
+        }
+        private void OnDisable() {
+            _trapped._event -= OnTrapped;
+        }
+
+        private void OnTrapped() {
+            _isPushing = false;
+            _textGO.SetActive(false);
+            _canPush = false;
+            GetComponent<Collider>().enabled = false;
+        }
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(_playerTag))
@@ -39,7 +55,12 @@ namespace ZKY
                 _isPushing = !_isPushing;
                 if (_isPushing)
                 {
+                    _textGO.GetComponentInChildren<TextMeshProUGUI>().text = "Press Space to Stop Pushing";
                     _releventPos = _player.transform.position - transform.position;
+                }
+                else
+                {
+                    _textGO.GetComponentInChildren<TextMeshProUGUI>().text = "Press Space to Push";
                 }
             }
             if (_isPushing)

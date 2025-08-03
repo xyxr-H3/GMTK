@@ -163,6 +163,7 @@ public class SoundManager : SinglatonForMono<SoundManager>
         }
     }
 
+
     /**
      * @brief 使用渐变效果调整指定名称的音频音量
      * @param name 音频名称

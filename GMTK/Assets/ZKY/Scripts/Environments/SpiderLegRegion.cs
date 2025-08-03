@@ -23,6 +23,7 @@ namespace ZKY
             {
                 _spiderHurtEvent.Invoke();
                 _spiderLegAnim.GetHurt();
+                SoundManager.instance.Play("Trapped");
             }
         }
     }

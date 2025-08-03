@@ -230,8 +230,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b17bdeabbbc943a782037b7627b5111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneToGo: Level3
+  _sceneToGo: Level4
   _useTransition: 1
+  _playAudio: 0
+  _musicName: Home
+  _stopMusic: 1
+  _fadeOutMusic: 1
+  _fadeOutTime: 1
 --- !u!114 &192262057
 MonoBehaviour:
   m_ObjectHideFlags: 0
