@@ -711,6 +711,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1899225569}
+  - {fileID: 983491350}
   - {fileID: 1651260243}
   - {fileID: 1826597085}
   m_Father: {fileID: 0}
@@ -1107,7 +1108,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1651260243}
+    m_TransformParent: {fileID: 641898840}
     m_Modifications:
     - target: {fileID: 1003728141150037343, guid: 74d6d8301f6964b81b9a4daa25e54741, type: 3}
       propertyPath: m_IsActive
@@ -1218,7 +1219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6362304713023627917, guid: 74d6d8301f6964b81b9a4daa25e54741, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6362304713023627917, guid: 74d6d8301f6964b81b9a4daa25e54741, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1234,15 +1235,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6362304713023627917, guid: 74d6d8301f6964b81b9a4daa25e54741, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6362304713023627917, guid: 74d6d8301f6964b81b9a4daa25e54741, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6362304713023627917, guid: 74d6d8301f6964b81b9a4daa25e54741, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6362304713023627917, guid: 74d6d8301f6964b81b9a4daa25e54741, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2959,7 +2960,6 @@ Transform:
   - {fileID: 1724330640}
   - {fileID: 1416408137}
   - {fileID: 966236088}
-  - {fileID: 983491350}
   m_Father: {fileID: 641898840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1651260244
@@ -2989,11 +2989,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f1eebe1e27f5947299c4e36fdeadb935, type: 2}
   - {fileID: 2100000, guid: 08a1a7ff4b0b04196906cdd1686123a1, type: 2}
   - {fileID: 2100000, guid: 5d036afde015140ab9472dd567c74b5e, type: 2}
-  _spiderLiegs:
-  - {fileID: 1037758404}
-  - {fileID: 1724330639}
-  - {fileID: 1416408136}
-  - {fileID: 966236087}
   _spiderDisappearTime: 1
   _waitTime: 2
 --- !u!1 &1684584724
