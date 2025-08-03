@@ -15,19 +15,24 @@ namespace ZKY
         [SerializeField] private Vector3 _releventPos;
         [SerializeField] private GameObject _player;
         [SerializeField] private MyEvents _trapped;
+        [SerializeField] private bool _isTrapped;
 
-        private void OnEnable() {
+        private void OnEnable()
+        {
             _trapped._event += OnTrapped;
         }
-        private void OnDisable() {
+        private void OnDisable()
+        {
             _trapped._event -= OnTrapped;
         }
 
-        private void OnTrapped() {
+        private void OnTrapped()
+        {
             _isPushing = false;
             _textGO.SetActive(false);
             _canPush = false;
             GetComponent<Collider>().enabled = false;
+            _isTrapped = true;
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -63,7 +68,7 @@ namespace ZKY
                     _textGO.GetComponentInChildren<TextMeshProUGUI>().text = "Press Space to Push";
                 }
             }
-            if (_isPushing)
+            if (_isPushing && !_isTrapped)
             {
                 transform.position = _player.transform.position - _releventPos;
             }

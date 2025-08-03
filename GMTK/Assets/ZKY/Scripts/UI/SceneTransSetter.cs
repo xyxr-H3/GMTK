@@ -43,7 +43,8 @@ namespace ZKY
             }
         }
 
-        private void StopMusic(){
+        private void StopMusic()
+        {
             SoundManager.instance.Stop(_musicName);
             SoundManager.instance.ChangeVolumn(_musicName, 1);
         }
