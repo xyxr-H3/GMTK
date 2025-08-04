@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZKY;
 
 public class BallFall : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class BallFall : MonoBehaviour
     GameObject spider;
     [SerializeField]
     Animator animator;
+    [SerializeField]
+    MyEvents events;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,7 @@ public class BallFall : MonoBehaviour
             if (!spider.activeSelf)
             {
                 animator.SetBool("isfall", true);
+                events.Invoke();
             }
             else
             {

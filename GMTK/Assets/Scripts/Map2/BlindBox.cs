@@ -14,6 +14,8 @@ public class BlindBox : MonoBehaviour
     GameObject spider;
     [SerializeField]
     MyEvents encourage;
+    [SerializeField]
+    Vector3 spiderPostion;
     float distance = 2;
     int count = 0;
     int randomMax;
@@ -72,6 +74,7 @@ public class BlindBox : MonoBehaviour
 
     void CreateSpider()
     {
+        spider.transform.localPosition = spiderPostion;
         spider.SetActive(true);
         Debug.Log("÷©÷Î≈‹≥ˆ¿¥¡À");
     }

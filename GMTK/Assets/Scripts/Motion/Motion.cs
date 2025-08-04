@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using ZKY;
 
 public class Motion : MonoBehaviour
 {
@@ -11,6 +13,12 @@ public class Motion : MonoBehaviour
     float x;
     float y;
     float z;
+    [SerializeField]
+    MyEvents mEvents;
+    bool isDead = false;
+    float t;
+    [SerializeField]
+    GameObject worldBox;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +29,22 @@ public class Motion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        AnimatorManager();
+        if (!isDead)
+        {
+            Move();
+            AnimatorManager();
+        }
+        else
+        {
+            t -= Time.deltaTime;
+            if (t < 0)
+            {
+                animator.SetBool("IsDead", false);
+                this.transform.position = new Vector3(-4, 0.5f, -2.5f);
+                worldBox.transform.eulerAngles = new Vector3(0, 0, 0);
+                isDead = false;
+            }
+        }
     }
     void Move()
     {
@@ -49,6 +71,22 @@ public class Motion : MonoBehaviour
         {
             animator.SetBool("IsWalk", false);
         }
+    }
+    private void OnEnable()
+    {
+        mEvents._event += OnDead;
+    }
 
+    private void OnDisable()
+    {
+        mEvents._event -= OnDead;
+    }
+
+    void OnDead()
+    {
+        rb.velocity = Vector3.zero;
+        isDead = true;
+        t = 1;
+        animator.SetBool("IsDead", true);
     }
 }

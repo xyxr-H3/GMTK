@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZKY;
 
 public class Spider : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField]
     GameObject player;
+    [SerializeField]
+    MyEvents events;
+    float t = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,25 @@ public class Spider : MonoBehaviour
         else
         {
             this.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            t = 1;
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        t -= Time.deltaTime;
+        if (other.CompareTag("Player"))
+        {
+            if (t < 0)
+            {
+                events.Invoke();
+                this.gameObject.SetActive(false);
+            }
         }
     }
 }
