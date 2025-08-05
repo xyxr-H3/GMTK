@@ -160,8 +160,8 @@ MonoBehaviour:
   _wait: 0.2
   _isOpened: 0
   _giftItemMoveY: 1
-  _giftItemMoveDuration: 0.5
-  _giftItemMoveDuration2: 0.5
+  _giftItemMoveDuration: 1
+  _giftItemMoveDuration2: 1
   _background: {fileID: 4728257112158168499}
 --- !u!1 &2349029642960484959
 GameObject:

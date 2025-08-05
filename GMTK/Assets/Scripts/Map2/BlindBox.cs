@@ -16,6 +16,8 @@ public class BlindBox : MonoBehaviour
     MyEvents encourage;
     [SerializeField]
     Vector3 spiderPostion;
+    [SerializeField] private GameObject _infoTag;
+    private bool _isFirst = false;
     float distance = 2;
     int count = 0;
     int randomMax;
@@ -54,7 +56,7 @@ public class BlindBox : MonoBehaviour
             bool isNull = UnityEngine.Random.Range(0, randomMax) < winningRate;
             if (isNull && count < 3)
             {
-                Debug.Log("ÄãÃ»ÖÐ½±");
+                Debug.Log("ï¿½ï¿½Ã»ï¿½Ð½ï¿½");
             }
             else if (isNull && count == 2)
             {
@@ -65,7 +67,7 @@ public class BlindBox : MonoBehaviour
                 randomMax = 1;
                 winningRate = 1;
                 encourage.Invoke();
-                Debug.Log("ÄãÖÐ½±ÁË");
+                Debug.Log("ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½");
             }
         }
         count++;
@@ -76,13 +78,18 @@ public class BlindBox : MonoBehaviour
     {
         spider.transform.localPosition = spiderPostion;
         spider.SetActive(true);
-        Debug.Log("Ö©ÖëÅÜ³öÀ´ÁË");
+        Debug.Log("Ö©ï¿½ï¿½ï¿½Ü³ï¿½ï¿½ï¿½ï¿½ï¿½");
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !isEnter)
         {
+            if (!_isFirst)
+            {
+                _infoTag.SetActive(true);
+                _isFirst = true;
+            }
             isEnter = true;
         }
     }

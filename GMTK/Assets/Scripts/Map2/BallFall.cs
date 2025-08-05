@@ -11,6 +11,8 @@ public class BallFall : MonoBehaviour
     Animator animator;
     [SerializeField]
     MyEvents events;
+    [SerializeField] private float _ballFallDuration = 1.0f;
+    private bool _isFirst = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,15 +28,19 @@ public class BallFall : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!spider.activeSelf)
+            if (_isFirst)
             {
-                animator.SetBool("isfall", true);
-                events.Invoke();
-            }
-            else
-            {
-                animator.SetBool("attackSpider", true);
-                spider.SetActive(false);
+                _isFirst = false;
+                if (!spider.activeSelf)
+                {
+                    animator.SetBool("isfall", true);
+                    Invoke("BallFallEnd", _ballFallDuration);
+                }
+                else
+                {
+                    animator.SetBool("attackSpider", true);
+                    spider.SetActive(false);
+                }
             }
         }
     }
@@ -45,5 +51,10 @@ public class BallFall : MonoBehaviour
             animator.SetBool("isfall", false);
 
         }
+    }
+
+    public void BallFallEnd()
+    {
+        events.Invoke();
     }
 }

@@ -9,6 +9,7 @@ namespace ZKY
     public class MyEvents : ScriptableObject
     {
         public UnityAction _event;
+
         public void Invoke()
         {
             _event?.Invoke();

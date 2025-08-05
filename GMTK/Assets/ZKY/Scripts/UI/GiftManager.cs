@@ -16,6 +16,7 @@ namespace ZKY
         [SerializeField] private float _giftItemMoveDuration;
         [SerializeField] private float _giftItemMoveDuration2;
         [SerializeField] private GameObject _background;
+        private float _originalSpeed;
 
         private void Awake()
         {
@@ -37,11 +38,15 @@ namespace ZKY
         public void GetGift()
         {
             if (_isOpened) return;
+            var player = FindAnyObjectByType<Motion>();
+            _originalSpeed = player.speed;
+            player.speed = 0;
             StartCoroutine(GetGiftCoroutine());
         }
 
         public void Close()
         {
+            FindAnyObjectByType<Motion>().speed = _originalSpeed;
             _background.transform.DOScale(Vector3.zero, _giftItemMoveDuration2).SetEase(Ease.InBack).onComplete += () =>
             {
                 _background.SetActive(false);

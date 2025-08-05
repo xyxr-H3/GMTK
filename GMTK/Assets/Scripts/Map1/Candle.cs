@@ -16,9 +16,11 @@ public class Candle : MonoBehaviour
     GameObject l;
     [SerializeField]
     MyEvents events;
+    [SerializeField] private GameObject _infoTag;
     Vector3 ctoPPosition;
     float distance = 2f;
     bool isMove;
+    private bool _isInteract;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +31,15 @@ public class Candle : MonoBehaviour
     void Update()
     {
         //RecordPosition();
-        if (Input.GetKey(KeyCode.Space) && isMove)
+        if (Input.GetKey(KeyCode.Space) && isMove && !_isInteract)
         {
             candlelight.SetActive(false);
             l.SetActive(false);
-            this.enabled = false;
+            _isInteract = true;
+            _infoTag.SetActive(false);
             animator.SetBool("IsFall", true);
             events.Invoke();
+            this.enabled = false;
         }
     }
     void RecordPosition()
@@ -51,17 +55,19 @@ public class Candle : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !_isInteract)
         {
             isMove = true;
+            _infoTag.SetActive(true);
             Debug.Log(2);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !_isInteract)
         {
             isMove = false;
+            _infoTag.SetActive(false);
             Debug.Log(3);
         }
     }
